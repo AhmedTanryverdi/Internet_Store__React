@@ -1,0 +1,28 @@
+@import "../../../../shared/scss/styles.scss";
+
+.register {
+	margin-top: 40px;
+
+	.register__name {
+		@include flex-center;
+		column-gap: 30px;
+		&-input {
+			height: 40px;
+			font-size: 22px;
+			padding: 12px 8px;
+			width: 100%;
+			outline: none;
+		}
+
+		.error {
+			border: 1px solid red;
+			box-shadow: 0 0 7px 1px red inset;
+			
+		}
+	}
+	.text-error {
+		color: red;
+		display: block;
+		font-size: 14px;
+	}
+}

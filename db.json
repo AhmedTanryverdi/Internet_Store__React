@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "08b5",
+      "firstname": "ahmed",
+      "lastname": "tanryverdi",
+      "email": "tanryverdi@yandex.ru",
+      "password": "123456"
+    }
+  ]
+}

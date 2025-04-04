@@ -5,7 +5,7 @@
 	min-height: 100vh;
 	background-color: $auth-bg;
 	padding-top: 50px;
-	
+
 	.container {
 		@include flex-center(column);
 		background-color: $form-bg;
@@ -13,31 +13,6 @@
 		margin: auto;
 		padding: 40px;
 		border-radius: 4px;
-
-		.auth__topRow {
-			@include flex-center;
-
-			.auth__topRow-leftBtn .btn,
-			.auth__topRow-rightBtn .btn {
-				width: 260px;
-				height: 50px;
-				border: none;
-				background-color: rgba($color: $gray-light, $alpha: 0.25);
-				color: $gray-light;
-				font-size: 20px;
-				transition: 0.4s;
-				&:hover {
-					background-color: $auth-btn-bg-hover;
-					color: #fff;
-				}
-			}
-
-			.auth__topRow-leftBtn .active,
-			.auth__topRow-rightBtn .active {
-				background-color: $auth-btn-bg-active;
-				color: #fff;
-			}
-		}
 
 		.form {
 			width: 100%;
@@ -70,8 +45,18 @@
 						text-transform: uppercase;
 						outline: none;
 					}
+
+					&-btn:disabled {
+						background-color: darken($color: #1ab188, $amount: 20);
+						cursor: wait;
+					}
 				}
 			}
+		}
+
+		.errorStatus{
+			color: red;
+			margin-top: 10px;
 		}
 	}
 }

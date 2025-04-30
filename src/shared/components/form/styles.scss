@@ -1,16 +1,53 @@
-.form {
-	.input {
-        width: 100%;
-		height: 40px;
-		font-size: 22px;
-		padding: 12px 8px;
-		outline: none;
-		&[name="password"] {
-			margin-top: 30px;
-		}
+@import "../../scss/styles.scss";
+
+.access {
+	max-width: 1920px;
+	min-height: 100vh;
+	background-color: $auth-bg;
+	padding-top: 50px;
+
+	.container {
+		@include flex-center(column);
+		background-color: $form-bg;
+		max-width: 600px;
+		margin: auto;
+		padding: 40px;
+		border-radius: 4px;
 	}
 
-    .error{
-        color: red;
-    }
+	.form {
+		&__header {
+			.form__header-title {
+				margin-top: 40px;
+				.title {
+					text-align: center;
+					color: #fff;
+				}
+			}
+		}
+		&__header {
+			.form__header-title {
+				margin-top: 40px;
+				.title {
+					text-align: center;
+					color: #fff;
+				}
+			}
+		}
+        
+		.input {
+			width: 100%;
+			height: 40px;
+			font-size: 22px;
+			padding: 12px 8px;
+			outline: none;
+			&[name="password"] {
+				margin-top: 30px;
+			}
+		}
+
+		.error {
+			color: red;
+		}
+	}
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./styles.scss";
 import { Button } from "../button/Button";
+import { TopRow } from "./ui/top-row/TopRow";
+import "./styles.scss";
 
 export const Form: React.FC<{
 	formClass: string;
@@ -30,34 +31,46 @@ export const Form: React.FC<{
 	};
 
 	return (
-		<form className={`form ${formClass}`}>
-			{Component && <Component />}
-			<input
-				type="text"
-				name="email"
-				className="input"
-				onBlur={validateEmail}
-				placeholder="Email address"
-				required
-			/>
-			{isEmailError && (
-				<span className="error">
-					Не правильно введен email или пароль
-				</span>
-			)}
-			<input
-				type="text"
-				name="password"
-				className="input"
-				onBlur={validatePassword}
-				placeholder="Set A Password"
-				required
-			/>
-			{isPasswordError && (
-				<span className="error">Не правильно введен пароль</span>
-			)}
+		<div className="access">
+			<div className="container">
+				<form className={`form ${formClass}`}>
+					<TopRow />
+					<div className="form__header">
+						<div className="form__header-title">
+							<h2 className="title">Sign Up for Free</h2>
+						</div>
+					</div>
+					{Component && <Component />}
+					<input
+						type="text"
+						name="email"
+						className="input"
+						onBlur={validateEmail}
+						placeholder="Email address"
+						required
+					/>
+					{isEmailError && (
+						<span className="error">
+							Не правильно введен email или пароль
+						</span>
+					)}
+					<input
+						type="text"
+						name="password"
+						className="input"
+						onBlur={validatePassword}
+						placeholder="Set A Password"
+						required
+					/>
+					{isPasswordError && (
+						<span className="error">
+							Не правильно введен пароль
+						</span>
+					)}
 
-			<Button children={childrenBtn} isPending={false} />
-		</form>
+					<Button children={childrenBtn} isPending={false} />
+				</form>
+			</div>
+		</div>
 	);
 };

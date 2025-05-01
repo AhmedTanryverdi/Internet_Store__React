@@ -1,38 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "../../../../shared/components/form/Form";
+import { Input } from "../../../../shared/components/form/ui/input/Input";
+import { InputFieldRegister } from "../../../../shared/utils/constants";
+import { RootState, UserType } from "../../../../shared/utils/types/types";
+import { useSelector } from "react-redux";
 import "./register.scss";
 
 export const Register: React.FC = (): React.JSX.Element => {
-	const [nameError, setNameError] = useState("");
-
-	const validateName = (e: any) => {
-		if (e.target.value < 3) {
-			setNameError("Поля должны содержать не менее трех символов!");
-		} else {
-			setNameError("");
-		}
-	};
-
 	const RegisterFields: React.FC = (): React.JSX.Element => {
+		const user = useSelector<RootState, Partial<UserType>>(
+			(state) => state.user.user
+		);
 		return (
 			<div className="register-fields">
 				<div className="inputs">
-					<input
-						type="text"
-						name="firstName"
-						className="input"
-						onBlur={validateName}
-						placeholder="First name"
-					/>
-					<input
-						type="text"
-						name="lastName"
-						className="input"
-						onBlur={validateName}
-						placeholder="Last name"
-					/>
+					{InputFieldRegister.map((item, index: number) => {
+						const value = user[item?.name];
+						
+						return (
+							<Input
+								key={index}
+								{...item}
+								defaultValue={`${value}`}
+							/>
+						);
+					})}
 				</div>
-				{nameError && <span className="error">{nameError}</span>}
 			</div>
 		);
 	};
@@ -43,6 +36,7 @@ export const Register: React.FC = (): React.JSX.Element => {
 				formClass=""
 				Component={RegisterFields}
 				childrenBtn="get started"
+				url="register"
 			/>
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React from "react";
-import "./toprow.scss";
 import { useNavigate } from "react-router-dom";
+import "./toprow.scss";
 
 export const TopRow: React.FC<{}> = (): React.JSX.Element => {
 	const navigate = useNavigate();

@@ -10,7 +10,7 @@ export const Header: React.FC = (): React.JSX.Element => {
 				<div className="content">
 					<h1 className="title">Лучшие товары</h1>
 					<div className="actions">
-                        <Filter />
+						<Filter />
 						<Exit />
 					</div>
 				</div>

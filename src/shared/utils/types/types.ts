@@ -17,7 +17,6 @@ export type InputType = {
 
 export interface IUser {
 	user: UserType;
-	token: string;
 }
 
 export type ProductType = {

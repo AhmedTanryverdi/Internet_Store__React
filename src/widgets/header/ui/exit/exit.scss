@@ -1,0 +1,13 @@
+.exit {
+	color: red;
+	&__btn {
+		text-shadow: 1px 1px 3px green;
+		box-shadow: 0 0 3px 3px red;
+		padding: 2px;
+		background-color: transparent;
+		outline: none;
+		border: none;
+		font-size: 17px;
+		color: grey;
+	}
+}

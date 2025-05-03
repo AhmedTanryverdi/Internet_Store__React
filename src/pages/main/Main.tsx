@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ProductType } from "../../shared/utils/types/types";
+import { Header } from "../../widgets/header/Header";
 
 export const Main: React.FC = (): React.JSX.Element => {
 	const [products, setProducts] = useState<ProductType[]>([]);
@@ -9,19 +10,24 @@ export const Main: React.FC = (): React.JSX.Element => {
 			.then((response) => response.json())
 			.then((data) => setProducts(data));
 	}, []);
-	console.log(products);
+
 	return (
-		<div>
-			{products.map((product, index) => {
-				return (
-					<img
-						src={product?.image}
-						key={index}
-						width={200}
-						alt="image"
-					/>
-				);
-			})}
+		<div className="main">
+			<div className="container">
+				<Header />
+				<div className="products">
+					{products.map((product, index) => {
+						return (
+							<img
+								src={product?.image}
+								key={index}
+								width={200}
+								alt="image"
+							/>
+						);
+					})}
+				</div>
+			</div>
 		</div>
 	);
 };

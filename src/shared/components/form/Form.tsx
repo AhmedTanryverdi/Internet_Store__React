@@ -39,21 +39,17 @@ export const Form: React.FC<{
 
 			const errorValidate = validate(data);
 
-			dispatch(setUser({ ...data }));
 			if (errorValidate) {
 				setError(errorValidate);
 				return data;
 			}
 
 			try {
-				const response = await fetch(
-					`http://localhost:8000/${url}`,
-					{
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify(data),
-					}
-				);
+				const response = await fetch(`http://localhost:8000/${url}`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(data),
+				});
 
 				if (!response.ok) {
 					setError(true);
@@ -62,8 +58,8 @@ export const Form: React.FC<{
 				}
 				const result = await response.json();
 
-				dispatch(setUser({ ...result }));
-				console.log(result);
+				dispatch(setUser({ ...result.user }));
+				localStorage.setItem("user", JSON.stringify(result));
 			} catch (error) {
 				setError(true);
 				setMessage("Непредвиденная ошибка!");

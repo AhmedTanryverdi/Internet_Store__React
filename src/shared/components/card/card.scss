@@ -1,0 +1,56 @@
+.card {
+	max-width: 320px;
+	width: 100%;
+	margin-top: 20px;
+	padding: 10px 25px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	transition: 0.6s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+	&:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 0 5px 1px green;
+	}
+	.image {
+		width: 100%;
+		height: 250px;
+		object-fit: contain;
+	}
+
+	.title {
+		margin-top: 15px;
+		font-size: 20px;
+		color: #7f8f18;
+		text-shadow: 1px 1px 3px grey;
+	}
+
+	.price {
+		margin-top: 10px;
+		font-weight: 600;
+		font-size: 20px;
+		color: #4cbb17;
+		text-shadow: 1px 1px 3px black;
+	}
+
+	&__btn {
+		max-width: 270px;
+		width: 100%;
+		height: 40px;
+        margin-top: 20px;
+		background-color: rgb(74, 223, 74);
+        border: none;
+        font-size: 18px;
+        color: #3f470a;
+        transition: 0.4s;
+        border-radius: 4px;
+
+        &:active{
+            background-color: rgb(7, 63, 7);
+            color: #7f8f18;
+            text-shadow: 1px 1px 4px red;
+        }
+	}
+}

@@ -5,15 +5,13 @@ import { Register } from "./pages/auth/ui/register/Register";
 
 function App() {
 	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Login />}/>
-					<Route path="/register" element={<Register />} />
-					<Route path="/main" element={<Main />} />
-				</Routes>
-			</BrowserRouter>
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/main" element={<Main />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

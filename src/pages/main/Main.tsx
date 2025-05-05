@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ProductType } from "../../shared/utils/types/types";
 import { Header } from "../../widgets/header/Header";
+import { Card } from "../../shared/components/card/Card";
+import "./main.scss";
 
 export const Main: React.FC = (): React.JSX.Element => {
 	const [products, setProducts] = useState<ProductType[]>([]);
@@ -17,14 +19,7 @@ export const Main: React.FC = (): React.JSX.Element => {
 				<Header />
 				<div className="products">
 					{products.map((product, index) => {
-						return (
-							<img
-								src={product?.image}
-								key={index}
-								width={200}
-								alt="image"
-							/>
-						);
+						return <Card key={index} {...product} />;
 					})}
 				</div>
 			</div>

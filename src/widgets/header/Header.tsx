@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
 import { Exit } from "./ui/exit/Exit";
 import { Filter } from "./ui/filter/Filter";
-import { useSelector } from "react-redux";
-import { RootState, UserType } from "../../shared/utils/types/types";
+import { useAppDispatch } from "../../shared/utils/types/types";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../../entities/model/slices/userSlice";
 import "./header.scss";
 
 export const Header: React.FC = (): React.JSX.Element => {
 	const navigate = useNavigate();
-	const user = useSelector<RootState, UserType>((state) => state.user.user);
+	const dispatch = useAppDispatch();
+
 	useEffect(() => {
-		if (!user.email && !user.email) {
+		const storageUser = localStorage.getItem("user");
+
+		if (storageUser !== null) {
+			dispatch(setUser(JSON.parse(storageUser)));
+		} else {
 			navigate("/");
 		}
-	}, [user]);
+	}, []);
 	return (
 		<header className="header">
 			<div className="container">

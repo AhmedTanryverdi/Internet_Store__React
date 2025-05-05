@@ -2,14 +2,14 @@ import React from "react";
 import "./card.scss";
 
 export const Card: React.FC<{
-	image: string;
+	thumbnail: string;
 	title: string;
 	price: number;
-}> = ({ image, title, price }): React.JSX.Element => {
+}> = ({ thumbnail, title, price }): React.JSX.Element => {
 	return (
 		<div className="card">
 			<div className="card__content">
-				<img src={image} alt="image" className="image" />
+				<img src={thumbnail} alt="image" className="image" />
 				<h3 className="title">{title}</h3>
 				<p className="price">${price}</p>
 			</div>

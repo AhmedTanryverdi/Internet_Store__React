@@ -1,6 +1,6 @@
 .button {
 	width: 100%;
-    margin-top: 40px;
+	margin-top: 40px;
 	padding: 15px 0;
 	background-color: #1ab188;
 	color: #fff;
@@ -10,4 +10,9 @@
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	outline: none;
+
+	&:disabled {
+		background-color: rgb(127, 153, 124);
+		color: darkgrey;
+	}
 }

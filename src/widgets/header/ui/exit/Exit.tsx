@@ -1,10 +1,12 @@
 import React from "react";
-import "./exit.scss";
 import { useAppDispatch } from "../../../../shared/utils/types/types";
 import { setUser } from "../../../../entities/model/slices/userSlice";
+import "./exit.scss";
+import { useNavigate } from "react-router-dom";
 
 export const Exit: React.FC = (): React.JSX.Element => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	return (
 		<div className="exit">
 			<button
@@ -20,6 +22,7 @@ export const Exit: React.FC = (): React.JSX.Element => {
 							password: "",
 						})
 					);
+					navigate("/");
 				}}
 			>
 				Выйти

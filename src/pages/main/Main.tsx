@@ -8,9 +8,9 @@ export const Main: React.FC = (): React.JSX.Element => {
 	const [products, setProducts] = useState<ProductType[]>([]);
 
 	useEffect(() => {
-		fetch("https://fakestoreapi.com/products")
+		fetch("https://dummyjson.com/products/")
 			.then((response) => response.json())
-			.then((data) => setProducts(data));
+			.then((data) => setProducts(data.products));
 	}, []);
 
 	return (

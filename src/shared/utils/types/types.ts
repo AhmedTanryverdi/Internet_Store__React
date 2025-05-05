@@ -26,6 +26,12 @@ export type ProductType = {
 	description: string;
 	category: string;
 	image: string;
+	discountPercentage: number;
+	rating: number;
+	stock: number;
+	brand: string;
+	thumbnail: string;
+	images: string[];
 };
 
 export type RootState = ReturnType<typeof store.getState>;

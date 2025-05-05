@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { InputField } from "../../utils/constants";
 import { useCustomForm } from "./utils/hooks";
-import "./styles.scss";
 import { Title } from "./ui/title/Title";
+import "./styles.scss";
 
 export const Form: React.FC<{
 	formClass: string;
@@ -22,21 +22,18 @@ export const Form: React.FC<{
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const storageUser = localStorage.getItem("user");
-
-		if (storageUser !== null) {
-			navigate("/main");
-		}
-	}, []);
-
 	const [state, formAction, isPending, status] = useCustomForm(
 		initialState,
 		url,
 		dispatch
 	);
+	
 	useEffect(() => {
-		if (status.ok) {
+		const storageUser = localStorage.getItem("user");
+
+		if (storageUser !== null) {
+			navigate("/main");
+		} else if (status.ok) {
 			navigate("/main");
 		}
 	}, [status]);

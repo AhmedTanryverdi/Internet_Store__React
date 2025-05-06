@@ -24,7 +24,9 @@ export const Input: React.FC<{
 			/>
 			{error && (
 				<span className="error">
-					Проверьте корректность введенных данных
+					{name === "password"
+						? "веддите не менее 6-ти символов"
+						: "некоректный email"}
 				</span>
 			)}
 		</label>

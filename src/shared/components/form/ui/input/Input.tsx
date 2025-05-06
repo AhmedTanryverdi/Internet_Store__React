@@ -26,6 +26,8 @@ export const Input: React.FC<{
 				<span className="error">
 					{name === "password"
 						? "веддите не менее 6-ти символов"
+						: name === "firstname" || name === "lastname"
+						? "веддите не менее 3-x символов"
 						: "некоректный email"}
 				</span>
 			)}

@@ -3,11 +3,23 @@
 	margin: auto;
 	.products {
 		width: 80%;
-		height: 100vh;
-		overflow: scroll;
+
 		margin: 0 auto;
 		display: flex;
 		flex-wrap: wrap;
 		gap: 45px 20px;
+
+		.child {
+			width: 100%;
+			padding: 12px;
+			font-size: 28px;
+			font-weight: 600;
+			text-align: center;
+			.img {
+				width: 24px;
+				height: 24px;
+				margin: 0 auto;
+			}
+		}
 	}
 }

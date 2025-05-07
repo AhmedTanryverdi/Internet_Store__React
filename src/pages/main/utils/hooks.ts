@@ -1,23 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export const useScroll = (parentRef: any, childRef: any, isLoading: boolean, callback: any) => {
+export const useScroll = (
+	childRef: React.RefObject<HTMLDivElement | null>,
+	isLoading: boolean,
+	callback: ()=>void
+) => {
+	const observer = useRef<IntersectionObserver | null>(null);
 	useEffect(() => {
 		const options = {
-			root: parentRef.current,
+			//root: parentRef.current,
 			rootMargin: "0px",
-			threshold: 0,
+			threshold: 1,
 		};
 
-		const observer = new IntersectionObserver(([target]) => {
+		if (observer.current !== null) {
+			childRef.current && observer.current?.unobserve(childRef.current);
+		}
+
+		observer.current = new IntersectionObserver(([target]) => {
 			if (target.isIntersecting && !isLoading) {
 				callback();
 			}
 		}, options);
 
-		observer.observe(childRef.current);
+		childRef.current && observer.current.observe(childRef.current);
 
 		return () => {
-			childRef.current && observer?.unobserve(childRef.current);
+			if (childRef.current) {
+				observer.current?.unobserve(childRef.current);
+				observer.current?.disconnect();
+			}
 		};
 	}, [callback]);
 };

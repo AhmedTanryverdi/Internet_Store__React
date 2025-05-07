@@ -8,7 +8,6 @@ export const useScroll = (
 	const observer = useRef<IntersectionObserver | null>(null);
 	useEffect(() => {
 		const options = {
-			//root: parentRef.current,
 			rootMargin: "0px",
 			threshold: 1,
 		};

@@ -17,7 +17,7 @@ export const Main: React.FC = (): React.JSX.Element => {
 			setIsLoading(true);
 			fetch(
 				`https://dummyjson.com/products?limit=6&skip=${
-					skip.current * 6
+					skip.current * 18
 				}`
 			)
 				.then((response) => response.json())

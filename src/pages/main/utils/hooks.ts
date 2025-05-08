@@ -3,9 +3,11 @@ import { useEffect, useRef } from "react";
 export const useScroll = (
 	childRef: React.RefObject<HTMLDivElement | null>,
 	isLoading: boolean,
-	callback: ()=>void
+	hasMore: boolean,
+	callback: () => void
 ) => {
 	const observer = useRef<IntersectionObserver | null>(null);
+
 	useEffect(() => {
 		const options = {
 			rootMargin: "0px",
@@ -15,6 +17,8 @@ export const useScroll = (
 		if (observer.current !== null) {
 			childRef.current && observer.current?.unobserve(childRef.current);
 		}
+
+		if (!hasMore) return;
 
 		observer.current = new IntersectionObserver(([target]) => {
 			if (target.isIntersecting && !isLoading) {
@@ -30,5 +34,5 @@ export const useScroll = (
 				observer.current?.disconnect();
 			}
 		};
-	}, [callback]);
+	}, [callback, hasMore, isLoading]);
 };

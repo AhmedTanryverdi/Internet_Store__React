@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
+import throttle from "lodash.throttle";
 import { CiSearch } from "react-icons/ci";
 import { IoIosClose } from "react-icons/io";
 import { useAppDispatch } from "../../../../shared/utils/types/types";
@@ -10,9 +11,16 @@ export const Filter: React.FC = (): React.JSX.Element => {
 	const [value, setValue] = useState<string>("");
 	const dispatch = useAppDispatch();
 
+	const updateInputText = useCallback(
+		throttle((str: string) => {
+			dispatch(setTextInput(str));
+		}, 700),
+		[]
+	);
+
 	const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value);
-		dispatch(setTextInput(e.target.value));
+		updateInputText(e.target.value);
 	};
 
 	return (

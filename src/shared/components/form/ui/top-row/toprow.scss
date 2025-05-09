@@ -12,14 +12,14 @@
 		color: $gray-light;
 		font-size: 20px;
 		transition: 0.4s;
+		outline: none;
 		&:hover {
 			background-color: $auth-btn-bg-hover;
 			color: #fff;
 		}
 	}
 
-	.btn:focus,
-	.btn:focus {
+	.btn.focus{
 		background-color: $auth-btn-bg-active;
 		color: #fff;
 	}

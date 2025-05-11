@@ -14,6 +14,10 @@
 			color: green;
 			text-shadow: 1px 1px 3px red;
 			font-size: 2em;
+
+			&:hover{
+				cursor: pointer;
+			}
 		}
 
 		.actions {

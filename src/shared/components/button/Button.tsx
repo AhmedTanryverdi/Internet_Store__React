@@ -12,7 +12,6 @@ type ButtonProps = {
 export const Button: React.FC<ButtonProps> = ({
 	children,
 	disabled,
-	href,
 	onClick,
 	className,
 }): React.JSX.Element => {

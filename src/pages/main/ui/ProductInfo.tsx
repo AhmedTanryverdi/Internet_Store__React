@@ -2,7 +2,7 @@ import React from "react";
 import "./productinfo.scss";
 
 export const ProductInfo: React.FC = (): React.JSX.Element => {
-	return <div className="productInfo">
+		fetch(`https://dummyjson.com/products/${id}`)
         <div className="container">
             info
         </div>

@@ -4,14 +4,14 @@ import "./styles.scss";
 type ButtonProps = {
 	children: React.ReactNode;
 	className?: string;
-	isPending?: boolean;
+	disabled?: boolean;
 	href?: string;
-	onClick?: (...args: any)=>void;
+	onClick?: (...args: any) => void;
 };
 
 export const Button: React.FC<ButtonProps> = ({
 	children,
-	isPending,
+	disabled,
 	href,
 	onClick,
 	className,
@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
 		<button
 			type="submit"
 			className={className}
-			disabled={isPending}
+			disabled={disabled}
 			onClick={onClick}
 		>
 			{children}

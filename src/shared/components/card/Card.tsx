@@ -1,7 +1,8 @@
 import React from "react";
-import "./card.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../button/Button";
+import "./card.scss";
+
 
 export const Card: React.FC<{
 	id: number;

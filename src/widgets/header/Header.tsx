@@ -25,7 +25,7 @@ export const Header: React.FC = (): React.JSX.Element => {
 		<header className="header">
 			<div className="container">
 				<div className="content">
-					<h1 className="title">Лучшие товары</h1>
+					<h1 className="title" onClick={()=>navigate("/")}>Лучшие товары</h1>
 					<div className="actions">
 						<Filter />
 						<IoCartOutline color="blue" size={28}/>

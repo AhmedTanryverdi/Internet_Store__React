@@ -57,7 +57,11 @@ export const Form: React.FC<{
 						);
 					})}
 
-					<Button children={childrenBtn} isPending={isPending} className="button"/>
+					<Button
+						children={childrenBtn}
+						disabled={isPending}
+						className="button"
+					/>
 					{status.error && (
 						<span className="error">{status.message}</span>
 					)}

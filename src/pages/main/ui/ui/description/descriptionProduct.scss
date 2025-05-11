@@ -1,4 +1,4 @@
-.description {
+.descriptionBlock {
 	margin-top: 30px;
 
 	.title {
@@ -19,5 +19,25 @@
 		margin-top: 20px;
 		font-size: 18px;
 		color: grey;
+	}
+
+	&__btns {
+		height: 40px;
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+		margin-top: 40px;
+
+		.counter {
+			width: 40%;
+			height: 100%;
+			display: flex;
+			font-size: 18px;
+			font-weight: 600;
+			.count {
+				display: inline-block;
+				padding: 10px;
+			}
+		}
 	}
 }

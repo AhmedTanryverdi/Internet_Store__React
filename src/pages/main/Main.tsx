@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { RootState } from "../../shared/utils/types/types";
-import { Header } from "../../widgets/header/Header";
 import { Card } from "../../shared/components/card/Card";
 import { useProductFetch, useScroll } from "./utils/hooks";
 import loading from "../../shared/assets/icons/loading.png";
@@ -21,12 +20,11 @@ export const Main: React.FC = (): React.JSX.Element => {
 	return (
 		<div className="main">
 			<div className="container">
-				<Header />
-				<div className="products">
+				<div className="product-list">
 					{products.map((product) => {
 						return <Card key={product.id} {...product} />;
 					})}
-					<div className="child" ref={childRef}>
+					<div className="product-item" ref={childRef}>
 						{hasMore && (
 							<img
 								src={loading}

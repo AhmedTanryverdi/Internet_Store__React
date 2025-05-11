@@ -1,26 +1,26 @@
-@import "../../../../scss/styles.scss";
+@use "../../../../scss/styles.scss" as global;
 
 .topRow {
-	@include flex-center;
+	@include global.flex-center;
 
 	.topRow__leftBtn .btn,
 	.topRow__rightBtn .btn {
 		width: 260px;
 		height: 50px;
 		border: none;
-		background-color: rgba($color: $gray-light, $alpha: 0.25);
-		color: $gray-light;
+		background-color: rgba($color: global.$gray-light, $alpha: 0.25);
+		color: global.$gray-light;
 		font-size: 20px;
 		transition: 0.4s;
-		outline: none;
+		outline: none;	
 		&:hover {
-			background-color: $auth-btn-bg-hover;
+			background-color: global.$auth-btn-bg-hover;
 			color: #fff;
 		}
 	}
 
 	.btn.focus{
-		background-color: $auth-btn-bg-active;
+		background-color: global.$auth-btn-bg-active;
 		color: #fff;
 	}
 }

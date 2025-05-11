@@ -1,11 +1,13 @@
 import React from "react";
 import "./card.scss";
+import { Link } from "react-router-dom";
 
 export const Card: React.FC<{
+	id: number,
 	thumbnail: string;
 	title: string;
 	price: number;
-}> = ({ thumbnail, title, price }): React.JSX.Element => {
+}> = ({ thumbnail, title, price, id }): React.JSX.Element => {
 	return (
 		<div className="card">
 			<div className="card__content">
@@ -14,9 +16,14 @@ export const Card: React.FC<{
 				<p className="price">${price}</p>
 			</div>
 
-			<button type="button" className="card__btn">
-				Добавить в корзину
-			</button>
+			<div className="card__btns">
+				<button type="button" className="btn-item">
+					<Link to={`/main/${id}`}>Добавить в корзину</Link>
+				</button>
+				<button type="button" className="btn-item">
+					<Link to={`/main/${id}`}>О товаре</Link>
+				</button>
+			</div>
 		</div>
 	);
 };

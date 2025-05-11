@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { IoCartOutline } from "react-icons/io5";
 import { Exit } from "./ui/exit/Exit";
 import { Filter } from "./ui/filter/Filter";
 import { useAppDispatch } from "../../shared/utils/types/types";
@@ -19,6 +20,7 @@ export const Header: React.FC = (): React.JSX.Element => {
 			navigate("/");
 		}
 	}, []);
+
 	return (
 		<header className="header">
 			<div className="container">
@@ -26,6 +28,7 @@ export const Header: React.FC = (): React.JSX.Element => {
 					<h1 className="title">Лучшие товары</h1>
 					<div className="actions">
 						<Filter />
+						<IoCartOutline color="blue" size={28}/>
 						<Exit />
 					</div>
 				</div>

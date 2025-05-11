@@ -1,6 +1,7 @@
 import React from "react";
 import { StarRating } from "./star-rating/StarRating";
 import "./descriptionProduct.scss";
+import { Button } from "../../../../../shared/components/button/Button";
 
 export const DescriptionProduct: React.FC<{
 	title: string;
@@ -14,9 +15,7 @@ export const DescriptionProduct: React.FC<{
 			<StarRating rating={rating} />
 			<p className="price">${price}</p>
 			<p className="description">{description}</p>
-			<button type="button" className="btn-item">
-				Добавить в корзину
-			</button>
+			<Button children="добавить в корзину" className="addToCard" />
 		</div>
 	);
 };

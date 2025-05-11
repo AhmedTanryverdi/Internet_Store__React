@@ -10,7 +10,7 @@ export const ImageGallery: React.FC<{
 	return (
 		<div className="image-gallery">
 			<div className="main-image">
-				<img src={images[mainImage] ?? ""} alt="image" />
+				<img src={images[mainImage] ?? "#"} alt="image" />
 			</div>
 			<div className="thumbnails">
 				{images?.map((item, index) => {

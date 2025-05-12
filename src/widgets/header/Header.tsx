@@ -6,14 +6,14 @@ import { RootState, useAppDispatch } from "../../shared/utils/types/types";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../entities/model/slices/userSlice";
 import { useSelector } from "react-redux";
-import { setColor } from "../../entities/model/slices/iconCartColor";
+import { setColor } from "../../entities/model/slices/cartSlice";
 import "./header.scss";
 
 export const Header: React.FC = (): React.JSX.Element => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const iconCartColor = useSelector<RootState, string>(
-		(state) => state.iconCartColor.color
+		(state) => state.cart.iconColor
 	);
 	useEffect(() => {
 		const colorStorage = localStorage.getItem("cartProducts");

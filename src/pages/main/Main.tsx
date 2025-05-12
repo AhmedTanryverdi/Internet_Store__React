@@ -6,13 +6,12 @@ import loading from "../../shared/assets/icons/loading.png";
 import { useSelector } from "react-redux";
 import { addToCart } from "../../shared/utils/functions/functions";
 import "./main.scss";
-import { setColor } from "../../entities/model/slices/iconCartColor";
-
+import { setColor } from "../../entities/model/slices/cartSlice";
 
 export const Main: React.FC = (): React.JSX.Element => {
 	const childRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
-	
+
 	const filter = useSelector<RootState, string>(
 		(state) => state.filter.textInput
 	);

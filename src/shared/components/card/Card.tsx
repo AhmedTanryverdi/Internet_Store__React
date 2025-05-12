@@ -9,7 +9,8 @@ export const Card: React.FC<{
 	thumbnail: string;
 	title: string;
 	price: number;
-}> = ({ thumbnail, title, price, id }): React.JSX.Element => {
+	onClick: () => void;
+}> = ({ thumbnail, title, price, id, onClick }): React.JSX.Element => {
 	const navigate = useNavigate();
 	return (
 		<div className="card">
@@ -20,11 +21,15 @@ export const Card: React.FC<{
 			</div>
 
 			<div className="card__btns">
-				<Button children="Добавить в корзину" className="addToCard" />
+				<Button
+					children="Добавить в корзину"
+					className="addToCard"
+					onClick={() => onClick()}
+				/>
 				<Button
 					children="О товаре"
 					className="aboutProduct"
-					onClick={()=>navigate(`/main/${id}`)}
+					onClick={() => navigate(`/main/${id}`)}
 				/>
 			</div>
 		</div>

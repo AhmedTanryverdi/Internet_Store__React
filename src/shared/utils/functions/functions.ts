@@ -1,3 +1,5 @@
+import { ProductType } from "../types/types";
+
 export const validateEmail = (str: string) => {
 	const re =
 		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -9,7 +11,6 @@ export const validateEmail = (str: string) => {
 };
 
 export const validatePassword = (str: string): boolean => {
-	
 	if (str.length < 6) {
 		return true;
 	}
@@ -21,4 +22,30 @@ export const validateName = (str: string) => {
 		return true;
 	}
 	return false;
+};
+
+interface localStorageType extends ProductType {
+	count: number;
+}
+
+export const addToCart = (product: ProductType) => {
+	const cartProducts: localStorageType[] = JSON.parse(
+		localStorage.getItem("cartProducts")!
+	);
+
+	if (cartProducts !== null) {
+		for (let element of cartProducts) {
+			if (element.id === product.id) {
+				element.count += 1;
+				return;
+			}
+		}
+
+		localStorage.setItem(
+			"cartProducts",
+			JSON.stringify([...cartProducts, product])
+		);
+		return;
+	}
+	localStorage.setItem("cartProducts", JSON.stringify([{ ...product, count: 1}]));
 };

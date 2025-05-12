@@ -1,19 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { ProductType } from "../../shared/utils/types/types";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import {
+	localStorageType,
+	RootState,
+	useAppDispatch,
+} from "../../shared/utils/types/types";
+import { Row } from "./ui/Row";
+import { setTotalPrice } from "../../entities/model/slices/cartSlice";
+import { SubTable } from "./ui/SubTable";
+import { useSelector } from "react-redux";
 import "./cart.scss";
-
-interface localStorageType extends ProductType {
-	quentity: number;
-}
 
 export const Cart: React.FC = (): React.JSX.Element => {
 	const [cartProducts, setCartProducts] = useState<localStorageType[]>([]);
+	const dispatch = useAppDispatch();
+	const totalPrice = useSelector<RootState, number>(
+		(state) => state.cart.totalPrice
+	);
 
 	useEffect(() => {
 		const products = localStorage.getItem("cartProducts");
-		if (products !== null) setCartProducts(JSON.parse(products));
+		if (products !== null) {
+			const objArr: localStorageType[] = JSON.parse(products);
+			setCartProducts(objArr);
+			let total = 0;
+			objArr.forEach((element) => {
+				total += element.quentity * element.price;
+			});
+
+			dispatch(setTotalPrice(total));
+		}
 	}, []);
+
+	const deleteProduct = (id: number) => {
+		const newProductList = cartProducts.filter((item) => {
+			if (item.id === id) {
+				dispatch(setTotalPrice(totalPrice - item.price));
+			}
+			return item.id !== id;
+		});
+
+		setCartProducts(newProductList);
+		localStorage.setItem("cartProducts", JSON.stringify(newProductList));
+	};
 
 	return (
 		<div className="cart">
@@ -30,26 +58,22 @@ export const Cart: React.FC = (): React.JSX.Element => {
 						</tr>
 					</thead>
 					<tbody className="tbody">
-						{cartProducts.map((item) => {
+						{cartProducts.map((product) => {
 							return (
-								<tr key={item.id} className="item">
-									<td className="image">
-										<img src={item.thumbnail} alt="image" />
-									</td>
-									<td className="title">
-										<h2>{item.title}</h2>
-									</td>
-									<td className="price">{item.price}</td>
-									<td className="quentity">
-										{item.quentity}
-									</td>
-									<td className="total">{item.quentity * item.price}</td>
-									<td className="delete"><RiDeleteBin6Line color="red"/></td>
-								</tr>
+								<Row
+									key={product.id}
+									item={product}
+									onClick={deleteProduct}
+								/>
 							);
 						})}
 					</tbody>
 				</table>
+				<SubTable
+					isEmpty={cartProducts.length > 0}
+					totalPrice={totalPrice}
+					setCartProducts={setCartProducts}
+				/>
 			</div>
 		</div>
 	);

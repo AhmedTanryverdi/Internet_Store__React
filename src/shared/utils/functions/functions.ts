@@ -25,7 +25,7 @@ export const validateName = (str: string) => {
 };
 
 interface localStorageType extends ProductType {
-	count: number;
+	quentity: number;
 }
 
 export const addToCart = (product: ProductType) => {
@@ -36,16 +36,24 @@ export const addToCart = (product: ProductType) => {
 	if (cartProducts !== null) {
 		for (let element of cartProducts) {
 			if (element.id === product.id) {
-				element.count += 1;
+				element.quentity += 1;
+				localStorage.setItem(
+					"cartProducts",
+					JSON.stringify(cartProducts)
+				);
 				return;
 			}
 		}
 
 		localStorage.setItem(
 			"cartProducts",
-			JSON.stringify([...cartProducts, product])
+			JSON.stringify([...cartProducts, { ...product, quentity: 1 }])
 		);
 		return;
 	}
-	localStorage.setItem("cartProducts", JSON.stringify([{ ...product, count: 1}]));
+
+	localStorage.setItem(
+		"cartProducts",
+		JSON.stringify([{ ...product, quentity: 1 }])
+	);
 };

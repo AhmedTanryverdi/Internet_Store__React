@@ -4,7 +4,9 @@ import { Card } from "../../shared/components/card/Card";
 import { useProductFetch, useScroll } from "./utils/hooks";
 import loading from "../../shared/assets/icons/loading.png";
 import { useSelector } from "react-redux";
+import { addToCart } from "../../shared/utils/functions/functions";
 import "./main.scss";
+
 
 export const Main: React.FC = (): React.JSX.Element => {
 	const childRef = useRef<HTMLDivElement>(null);
@@ -22,7 +24,15 @@ export const Main: React.FC = (): React.JSX.Element => {
 			<div className="container">
 				<div className="product-list">
 					{products.map((product) => {
-						return <Card key={product.id} {...product} />;
+						return (
+							<Card
+								key={product.id}
+								{...product}
+								onClick={() => {
+									addToCart(product);
+								}}
+							/>
+						);
 					})}
 					<div className="product-item" ref={childRef}>
 						{hasMore && (

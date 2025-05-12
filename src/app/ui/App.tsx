@@ -4,6 +4,7 @@ import { Login } from "../../pages/auth/ui/login/Login";
 import { Register } from "../../pages/auth/ui/register/Register";
 import { ProductInfo } from "../../pages/main/ui/ProductInfo";
 import { Layout } from "./Layout";
+import { Cart } from "../../pages/cart/Cart";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 					<Route path="register" element={<Register />} />
 					<Route path="main" element={<Main />} />
 					<Route path="main/:id" element={<ProductInfo />} />
+					<Route path="cart" element={<Cart />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
